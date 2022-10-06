@@ -1,0 +1,139 @@
+basePath: /
+definitions:
+  controller.Items:
+    properties:
+      description:
+        type: string
+      itemCode:
+        example: DJS 4123
+        type: string
+      itemId:
+        type: integer
+      quantity:
+        example: 2
+        type: integer
+    type: object
+  controller.Request:
+    properties:
+      customerName:
+        example: Tom Jerry
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/controller.Items'
+        type: array
+    type: object
+  controller.Response:
+    properties:
+      customerName:
+        example: Tom Jerry
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/controller.Items'
+        type: array
+      orderID:
+        example: 1
+        type: integer
+      orderedAt:
+        example: "2019-11-09T21:21:46+07:00"
+        type: string
+    type: object
+host: localhost:8181
+info:
+  contact:
+    email: brahmantyo.adi@gmail.com
+    name: Brahmantyo
+    url: http://www.mncbank.co.id/
+  description: This is a simple API server for training.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Gin Swagger Simple API
+  version: "1.0"
+paths:
+  /order/:id:
+    delete:
+      consumes:
+      - '*/*'
+      description: Delete Order
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.Response'
+        "500":
+          description: error
+          schema:
+            type: string
+      summary: Delete Order
+      tags:
+      - Orders
+    put:
+      consumes:
+      - '*/*'
+      description: Update Order
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.Response'
+        "500":
+          description: error
+          schema:
+            type: string
+      summary: Update Order
+      tags:
+      - Orders
+  /orders:
+    get:
+      consumes:
+      - '*/*'
+      description: Get All Order
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.Response'
+        "500":
+          description: error
+          schema:
+            type: string
+      summary: Get All Order
+      tags:
+      - Orders
+    post:
+      consumes:
+      - '*/*'
+      description: Create New Order
+      parameters:
+      - description: Order
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/controller.Request'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.Response'
+        "500":
+          description: error
+          schema:
+            type: string
+      summary: Create New Order
+      tags:
+      - Orders
+schemes:
+- http
+swagger: "2.0"

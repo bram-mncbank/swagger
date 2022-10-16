@@ -12,7 +12,7 @@ cd swagger
 go run main.go
 ~~~
 ### Access the web and API
-1. Open any browser and access *http://localhost:8181/swagger*
+1. Open any browser and access *http://localhost:8181/swagger/index.html*
 
 ## Author
 Yosef Brahmantyo Adi Kristanto<br>
